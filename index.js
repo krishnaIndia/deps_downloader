@@ -49,11 +49,15 @@ module.exports = (options, cb) => {
 		'targetDir': process.cwd()
 	}, options);
 
+	opts.mirror = opts.mirror + '/' + opts.version + '/';
+
 	const prefix = opts.filename;
-	const filename = prefix + "-v" + opts.version + "-" + opts.platform + "-" + opts.arch + '.zip';
+	const filename = prefix + "-" + opts.platform + "-" + opts.arch + '.zip';
 	const targetFilePattern = new RegExp(options.filePattern || '^(' + prefix + '|(lib)' + prefix +'.*\.(dll|so|dylib))$');
 
 	opts.customFilename = filename;
+
+	console.log('Downloading ', opts.version, filename);
 
 	return downloader(opts, (err, zipPath) => {
 		checkError(err);
