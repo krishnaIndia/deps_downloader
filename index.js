@@ -49,7 +49,7 @@ module.exports = (options, cb) => {
 		'targetDir': process.cwd()
 	}, options);
 
-	opts.mirror = opts.mirror + '/' + opts.version + '/';
+	opts.mirror = opts.mirror + '/' + opts.version';
 
 	const prefix = opts.filename;
 	const filename = prefix + "-" + opts.platform + "-" + opts.arch + '.zip';
